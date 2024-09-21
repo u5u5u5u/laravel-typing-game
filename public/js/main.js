@@ -1,5 +1,7 @@
 let startTime;
-const sentence = document.getElementById("sentence").innerText;
+let currentSentenceIndex = 0;
+let totalTime = 0;
+
 const inputField = document.getElementById("inputField");
 const timeDisplay = document.getElementById("time");
 
@@ -7,31 +9,45 @@ const csrfToken = document
     .querySelector("[name='csrf-token']")
     .getAttribute("content");
 
-console.log(csrfToken);
-
 inputField.addEventListener("input", function () {
     if (!startTime) {
         startTime = new Date().getTime();
     }
-    console.log(`start: ${startTime}`);
 
-    if (inputField.value === sentence) {
+    if (inputField.value === sentences[currentSentenceIndex].sentence) {
         const endTime = new Date().getTime();
-        console.log(`end: ${endTime}`);
         const timeTaken = (endTime - startTime) / 1000;
-        console.log(`time: ${timeTaken}`);
-        timeDisplay.innerText = timeTaken.toFixed(2);
 
-        // タイムを保存する処理
-        fetch("/save-score", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "X-CSRF-TOKEN": csrfToken,
-            },
-            body: JSON.stringify({
-                time: timeTaken,
-            }),
-        });
+        totalTime += timeTaken;
+        timeDisplay.innerText = totalTime.toFixed(2);
+
+        currentSentenceIndex++;
+        if (currentSentenceIndex < sentences.length) {
+            document.getElementById("sentence").innerText =
+                sentences[currentSentenceIndex].sentence;
+            inputField.value = "";
+            startTime = null;
+        } else {
+            fetch("/save-score", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRF-TOKEN": csrfToken,
+                },
+                body: JSON.stringify({
+                    time: totalTime,
+                }),
+            })
+                .then((response) => {
+                    if (response.ok) {
+                        window.location.href = "/dashboard";
+                    } else {
+                        console.log("Error");
+                    }
+                })
+                .catch((error) => {
+                    console.error("Error:", error);
+                });
+        }
     }
 });

@@ -37,7 +37,7 @@ class ScoreController extends Controller
             'time' => $request->time,
         ]);
 
-        return response()->json(['success' => true]);
+        return redirect()->route('dashboard')->with('success', 'タイムが保存されました！');
     }
 
     /**

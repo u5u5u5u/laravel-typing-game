@@ -80,12 +80,12 @@ class SentenceController extends Controller
 
     public function showGame()
     {
-        $sentence = Sentence::inRandomOrder()->first();
+        $sentences = Sentence::inRandomOrder()->limit(5)->get();
 
-        if (!$sentence) {
+        if ($sentences->isEmpty()) {
             return redirect()->route('dashboard')->with('error', 'No sentences found. Please register a sentence first.');
         }
 
-        return view('typing-game', ['sentence' => $sentence]);
+        return view('typing-game', ['sentences' => $sentences]);
     }
 }

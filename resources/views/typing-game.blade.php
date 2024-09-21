@@ -8,8 +8,8 @@
     <div class="container">
         <h1>Typing Game</h1>
         
-        @if ($sentence)
-        <p id="sentence" class="text-white">{{ $sentence->sentence }}</p>
+        @if ($sentences && $sentences->isNotEmpty())
+        <p id="sentence" class="text-white">{{ $sentences[0]->sentence }}</p>
 
         <input type="text" id="inputField" class="form-control" placeholder="Type here...">
 
@@ -20,3 +20,7 @@
     </div>
 </x-app-layout>
 <script src="{{ asset('/js/main.js') }}"></script>
+//文の配列をJavaScriptに渡す
+<script>
+    const sentences = @json($sentences);
+</script>
