@@ -15,3 +15,4 @@
         </div>
     </div>
 </x-app-layout>
+<script src="{{ asset('/js/main.js') }}"></script>
