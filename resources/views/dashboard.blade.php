@@ -14,5 +14,10 @@
             </div>
         </div>
     </div>
+
+    <!-- スタートボタン -->
+    <x-nav-link :href="route('typing-game')" :active="request()->routeIs('typing-game')">
+        {{ __('Game Start') }}
+    </x-nav-link>
+
 </x-app-layout>
-<script src="{{ asset('/js/main.js') }}"></script>
