@@ -3,6 +3,11 @@ let currentSentenceIndex = 0;
 let totalTime = 0;
 
 const inputField = document.getElementById("inputField");
+const autoFocus = () => {
+    inputField.focus();
+};
+autoFocus();
+
 const timeDisplay = document.getElementById("time");
 
 const csrfToken = document
