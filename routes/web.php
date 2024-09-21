@@ -20,6 +20,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('sentences', SentenceController::class);
     Route::get('/typing-game', [SentenceController::class, 'showGame'])->name('typing-game');
     Route::post('/save-score', [ScoreController::class, 'store'])->name('save-score');
+    Route::get('/scores', [ScoreController::class, 'index'])->name('scores.index');
 });
 
 require __DIR__.'/auth.php';

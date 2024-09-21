@@ -12,7 +12,8 @@ class ScoreController extends Controller
      */
     public function index()
     {
-        //
+        $scores = Score::with('user')->orderBy('time', 'asc')->get();
+        return view('scores.index', compact('scores'));
     }
 
     /**

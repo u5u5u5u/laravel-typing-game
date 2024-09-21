@@ -40,7 +40,7 @@ inputField.addEventListener("input", function () {
             })
                 .then((response) => {
                     if (response.ok) {
-                        window.location.href = "/dashboard";
+                        window.location.href = "/scores";
                     } else {
                         console.log("Error");
                     }
