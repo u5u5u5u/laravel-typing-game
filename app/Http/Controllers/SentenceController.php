@@ -29,7 +29,13 @@ class SentenceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'sentence' => 'required|max:255',
+        ]);
+
+        $request->user()->sentences()->create($request->only('sentence'));
+
+        return redirect()->route('sentences.index');
     }
 
     /**
@@ -37,7 +43,7 @@ class SentenceController extends Controller
      */
     public function show(Sentence $sentence)
     {
-        //
+        return view('sentences.show', compact('sentence'));
     }
 
     /**
