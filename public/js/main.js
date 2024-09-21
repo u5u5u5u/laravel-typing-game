@@ -9,12 +9,16 @@ const csrfToken = document
     .querySelector("[name='csrf-token']")
     .getAttribute("content");
 
+const correctSound = new Audio("/audio/correct.mp3");
+
 inputField.addEventListener("input", function () {
     if (!startTime) {
         startTime = new Date().getTime();
     }
 
     if (inputField.value === sentences[currentSentenceIndex].sentence) {
+        correctSound.play();
+        correctSound.currentTime = 0;
         const endTime = new Date().getTime();
         const timeTaken = (endTime - startTime) / 1000;
 
@@ -48,6 +52,7 @@ inputField.addEventListener("input", function () {
                 .catch((error) => {
                     console.error("Error:", error);
                 });
+            alert(`Game Over! Your time was ${totalTime.toFixed(2)} seconds`);
         }
     }
 });
