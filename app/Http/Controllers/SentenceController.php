@@ -12,7 +12,8 @@ class SentenceController extends Controller
      */
     public function index()
     {
-        //
+        $sentences = Sentence::with('user')->latest()->get();
+        return view('sentences.index', compact('sentences'));
     }
 
     /**
@@ -20,7 +21,7 @@ class SentenceController extends Controller
      */
     public function create()
     {
-        //
+        return view('sentences.create');
     }
 
     /**
