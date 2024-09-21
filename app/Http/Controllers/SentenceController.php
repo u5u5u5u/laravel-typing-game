@@ -51,7 +51,7 @@ class SentenceController extends Controller
      */
     public function edit(Sentence $sentence)
     {
-        //
+        return view('sentences.edit', compact('sentence'));
     }
 
     /**
@@ -59,7 +59,13 @@ class SentenceController extends Controller
      */
     public function update(Request $request, Sentence $sentence)
     {
-        //
+        $request->validate([
+            'sentence' => 'required|max:255',
+        ]);
+        
+        $sentence->update($request->only('sentence'));
+
+        return redirect()->route('sentences.show', $sentence);
     }
 
     /**
@@ -67,6 +73,8 @@ class SentenceController extends Controller
      */
     public function destroy(Sentence $sentence)
     {
-        //
+        $sentence->delete();
+        
+        return redirect()->route('sentences.index');
     }
 }
