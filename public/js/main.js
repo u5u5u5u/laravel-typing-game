@@ -14,9 +14,13 @@ const csrfToken = document
     .querySelector("[name='csrf-token']")
     .getAttribute("content");
 
+const typeSound = new Audio("/audio/typing-sound.mp3");
 const correctSound = new Audio("/audio/correct.mp3");
 
 inputField.addEventListener("input", function () {
+    typeSound.play();
+    typeSound.currentTime = 0;
+
     if (!startTime) {
         startTime = new Date().getTime();
     }
