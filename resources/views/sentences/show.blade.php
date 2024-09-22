@@ -13,8 +13,8 @@
                     <p class="text-gray-800 dark:text-gray-300 text-lg">{{ $sentence->sentence }}</p>
                     <p class="text-gray-600 dark:text-gray-400 text-sm">投稿者: {{ $sentence->user->name }}</p>
                     <div class="text-gray-600 dark:text-gray-400 text-sm">
-                        <p>登録日時: {{ $sentence->created_at->format('Y-m-d H:i') }}</p>
-                        <p>更新日時: {{ $sentence->updated_at->format('Y-m-d H:i') }}</p>
+                        <p>登録日時: {{ $sentence->created_at->timezone('Asia/Tokyo')->format('Y-m-d H:i') }}</p>
+                        <p>更新日時: {{ $sentence->updated_at->timezone('Asia/Tokyo')->format('Y-m-d H:i') }}</p>
                     </div>
                     @if (auth()->id() == $sentence->user_id)
                     <div class="flex mt-4">

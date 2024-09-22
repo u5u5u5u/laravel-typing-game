@@ -24,7 +24,7 @@
                                 <td class="border px-4 py-2">{{ $loop->iteration }}</td>
                                 <td class="border px-4 py-2">{{ $score->user->name }}</td>
                                 <td class="border px-4 py-2">{{ $score->time }}</td>
-                                <td class="border px-4 py-2">{{ $score->created_at }}</td>
+                                <td class="border px-4 py-2">{{ $score->created_at->timezone('Asia/Tokyo')->format('Y-m-d H:i:s') }}</td>
                             </tr>
                             @endforeach
                         </tbody>
