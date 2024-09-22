@@ -13,7 +13,7 @@
                         @if ($sentences && $sentences->isNotEmpty())
                         <p id="sentence" class="text-white text-5xl mb-5">{{ $sentences[0]->sentence }}</p>
 
-                        <input type="text" id="inputField" class="form-control text-5xl" placeholder="Type here...">
+                        <input type="text" id="inputField" class="form-control text-5xl" placeholder="Type here..." autocomplete="off">
 
                         <p class="text-white text-3xl">Time: <span id="time">0.00</span> seconds</p>
                         @else
