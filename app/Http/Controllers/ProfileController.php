@@ -8,9 +8,19 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use App\Models\User;
 
 class ProfileController extends Controller
 {
+    /**
+     * Display the user's profile.
+     */
+    public function show(User $user)
+    {
+        $bestTime = $user->scores()->orderBy('time', 'asc')->first();
+        return view('profile.show', compact('user', 'bestTime'));
+    }
+
     /**
      * Display the user's profile form.
      */

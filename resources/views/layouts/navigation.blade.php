@@ -15,6 +15,9 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('scores.index')" :active="request()->routeIs('scores.index')">
+                        {{ __('ランキング') }}
+                    </x-nav-link>
                     @if (auth()->id() === 1)
                     <x-nav-link :href="route('sentences.index')" :active="request()->routeIs('sentences.index')">
                         {{ __('Sentence一覧') }}
@@ -23,6 +26,9 @@
                         {{ __('Sentence登録') }}
                     </x-nav-link>
                     @endif
+                    <x-nav-link :href="route('profile.show', auth()->user())" :active="request()->routeIs('profile.show')">
+                        {{ __('プロフィール') }}
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -78,6 +84,9 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('scores.index')" :active="request()->routeIs('scores.index')">
+                {{ __('ランキング') }}
+            </x-responsive-nav-link>
             @if (auth()->id() === 1)
             <x-responsive-nav-link :href="route('sentences.index')" :active="request()->routeIs('sentences.index')">
                 {{ __('sentence一覧') }}
@@ -86,6 +95,9 @@
                 {{ __('Sentence登録') }}
             </x-responsive-nav-link>
             @endif
+            <x-responsive-nav-link :href="route('profile.show', auth()->user())" :active="request()->routeIs('profile.show')">
+                {{ __('プロフィール') }}
+            </x-responsive-nav-link>
         </div>
 
         <!-- Responsive Settings Options -->
