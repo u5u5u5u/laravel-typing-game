@@ -14,6 +14,12 @@
             <div class="text-gray-600 dark:text-gray-400 text-sm">
                 <p>アカウント作成日時: {{ $user->created_at->timezone('Asia/Tokyo')->format('Y-m-d H:i') }}</p>
             </div>
+            @if ($bestTime)
+            <div>
+                <p>Best Time : {{ $bestTime->time }} s</p>
+                <p class="text-gray-600 dark:text-gray-400 text-sm">{{ $bestTime->created_at->timezone('Asia/Tokyo')->format('Y-m-d H:i') }}</p>
+            </div>
+            @endif
             </div>
         </div>
         </div>

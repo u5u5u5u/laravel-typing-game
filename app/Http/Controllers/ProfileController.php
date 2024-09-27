@@ -17,7 +17,8 @@ class ProfileController extends Controller
      */
     public function show(User $user)
     {
-        return view('profile.show', compact('user'));
+        $bestTime = $user->scores()->orderBy('time', 'asc')->first();
+        return view('profile.show', compact('user', 'bestTime'));
     }
 
     /**

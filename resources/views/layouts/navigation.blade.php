@@ -27,7 +27,7 @@
                     </x-nav-link>
                     @endif
                     <x-nav-link :href="route('profile.show', auth()->user())" :active="request()->routeIs('profile.show')">
-                        {{ __('マイページ') }}
+                        {{ __('プロフィール') }}
                     </x-nav-link>
                 </div>
             </div>
@@ -96,7 +96,7 @@
             </x-responsive-nav-link>
             @endif
             <x-responsive-nav-link :href="route('profile.show', auth()->user())" :active="request()->routeIs('profile.show')">
-                {{ __('マイページ') }}
+                {{ __('プロフィール') }}
             </x-responsive-nav-link>
         </div>
 
