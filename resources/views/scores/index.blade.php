@@ -22,7 +22,9 @@
                             @foreach ($scores as $score)
                             <tr>
                                 <td class="border px-4 py-2">{{ $loop->iteration }}</td>
-                                <td class="border px-4 py-2">{{ $score->user->name }}</td>
+                                <td class="border px-4 py-2">
+                                    <a href="{{ route('profile.show', $score->user) }}">{{ $score->user->name }}</a>
+                                </td>
                                 <td class="border px-4 py-2">{{ $score->time }}</td>
                                 <td class="border px-4 py-2">{{ $score->created_at->timezone('Asia/Tokyo')->format('Y-m-d H:i:s') }}</td>
                             </tr>
