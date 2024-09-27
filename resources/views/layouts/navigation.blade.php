@@ -15,12 +15,14 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                    @if (auth()->id() === 1)
                     <x-nav-link :href="route('sentences.index')" :active="request()->routeIs('sentences.index')">
                         {{ __('Sentence一覧') }}
                     </x-nav-link>
                     <x-nav-link :href="route('sentences.create')" :active="request()->routeIs('sentences.create')">
                         {{ __('Sentence登録') }}
                     </x-nav-link>
+                    @endif
                 </div>
             </div>
 
