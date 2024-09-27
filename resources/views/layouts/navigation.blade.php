@@ -15,12 +15,14 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                    @if (auth()->id() === 1)
                     <x-nav-link :href="route('sentences.index')" :active="request()->routeIs('sentences.index')">
                         {{ __('Sentence一覧') }}
                     </x-nav-link>
                     <x-nav-link :href="route('sentences.create')" :active="request()->routeIs('sentences.create')">
                         {{ __('Sentence登録') }}
                     </x-nav-link>
+                    @endif
                 </div>
             </div>
 
@@ -76,12 +78,14 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
+            @if (auth()->id() === 1)
             <x-responsive-nav-link :href="route('sentences.index')" :active="request()->routeIs('sentences.index')">
                 {{ __('sentence一覧') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('sentences.create')" :active="request()->routeIs('sentences.create')">
                 {{ __('Sentence登録') }}
             </x-responsive-nav-link>
+            @endif
         </div>
 
         <!-- Responsive Settings Options -->

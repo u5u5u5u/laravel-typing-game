@@ -12,8 +12,10 @@
                     @foreach ($sentences as $sentence)
                     <div class="mb-4 p-4 bg-gray-100 dark:bg-gray-700 rounded-lg">
                         <p class="text-gray-800 dark:text-gray-300">{{ $sentence->sentence }}</p>
+                        @if (auth()->id() === 1)
                         <p class="text-gray-600 dark:text-gray-400 text-sm">登録者: {{ $sentence->user->name }}</p>
                         <a href="{{ route('sentences.show', $sentence) }}" class="text-blue-500 hover:text-blue-700">詳細を見る</a>
+                        @endif
                     </div>
                     @endforeach
                 </div>
