@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Sentence;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class SentenceController extends Controller
 {
@@ -21,7 +22,11 @@ class SentenceController extends Controller
      */
     public function create()
     {
-        return view('sentences.create');
+        if (Gate::allows('isAdmin')) {
+            return view('sentences.create');
+        }
+        
+        return abort(403);
     }
 
     /**
@@ -43,7 +48,11 @@ class SentenceController extends Controller
      */
     public function show(Sentence $sentence)
     {
-        return view('sentences.show', compact('sentence'));
+        if (Gate::allows('isAdmin')) {
+            return view('sentences.show', compact('sentence'));
+        }
+
+        return abort(403);
     }
 
     /**
@@ -78,6 +87,9 @@ class SentenceController extends Controller
         return redirect()->route('sentences.index');
     }
 
+    /**
+     * Show the typing game.
+     */
     public function showGame()
     {
         $sentences = Sentence::inRandomOrder()->limit(5)->get();
